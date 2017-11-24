@@ -43,12 +43,12 @@
             }
         }
 
-        fetch('https://www.storywars.net/api/users/1').then(function(response) {
+        let userId = prompt("UserId", "2");
+
+        fetch('https://www.storywars.net/api/users/' + userId).then(function(response) {
             return response.json()
         }).then(function(user) {
-            //alert(user.name + ' har ' + user.points + ' poäng på Story Wars');
             const mia = new User(user);
-            console.log(mia);
             document.body.innerHTML += "<p>" + mia.name + "</p>";
             document.body.innerHTML += "<img src='" + mia.image + "' />";
         });
