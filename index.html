@@ -24,5 +24,35 @@
 
         <footer>Mias sida 2018</footer>
     </div>
+    <script>
+        class User {
+            constructor(user) {
+                this.user = user;
+            }
+
+            get name() {
+                return this.user.name;
+            }
+
+            get points() {
+                return this.user.points;
+            }
+
+            get image() {
+                return this.user.profileImageUrl;
+            }
+        }
+
+        fetch('https://www.storywars.net/api/users/1').then(function(response) {
+            return response.json()
+        }).then(function(user) {
+            //alert(user.name + ' har ' + user.points + ' poäng på Story Wars');
+            const mia = new User(user);
+            console.log(mia);
+            document.body.innerHTML += "<p>" + mia.name + "</p>";
+            document.body.innerHTML += "<img src='" + mia.image + "' />";
+        });
+
+    </script>
 </body>
 </html>
